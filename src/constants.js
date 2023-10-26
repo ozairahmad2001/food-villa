@@ -501,4 +501,8 @@ export const restaurantList  = [
     },
   ]
 
-  export const swiggy_api_url = "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5482377&lng=77.2983373&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  export const swiggy_api_url = "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+
+  export const swiggy_menu_api_url = "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
+
+  export const MENU_ITEM_TYPE_KEY = "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";

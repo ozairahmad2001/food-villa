@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 export const Title = () => {
     return (
       <a href="/">
@@ -7,15 +9,21 @@ export const Title = () => {
 };
 
 const Header = () =>{
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
     return (
       <div className='header'>
         <Title/>
         <div className='nav-items'>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Cart</li>
+            <li> <Link to = '/'>Home</Link></li>
+            <li> <Link to = '/about'>About</Link></li>
+            <li> <Link to = '/contact'>Contact Us</Link></li>
+            <li> <Link to = '/cart'>Cart</Link></li>
+            <li>{isLoggedIn ? (<button className="logout-btn" onClick={()=> setIsLoggedIn(false)}>Logout</button>)
+             : 
+             (<button className="login-btn" onClick={() => navigate("/login")}>Login</button>)}</li>
           </ul>
         </div>
       </div>

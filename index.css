@@ -55,3 +55,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+.shimmer-card{
+    height: 200px;
+    width: 200px;
+    background-color: lightgrey;
+    margin: 20px;
+}

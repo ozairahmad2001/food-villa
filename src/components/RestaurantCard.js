@@ -1,3 +1,4 @@
+
 import { IMG_CDN_URL } from "../constants";
 
 const RestaurantCard = ({cloudinaryImageId, name, cuisines, areaName, avgRating}) => {

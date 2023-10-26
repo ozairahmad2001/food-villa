@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import { swiggy_api_url } from "../constants";
+import Shimmer from "./Shimmer";
+import { ShimmerSimpleGallery } from "react-shimmer-effects";
+import { Link } from "react-router-dom";
 
 function filterData (searchText, restaurants){
   const filterData = restaurants.filter((restaurants)=>restaurants?.info?.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -29,7 +32,10 @@ const Body = () =>{
       console.log(error);
     }
   }
-    return (
+  if(!allRestaurants) return null;
+    return allRestaurants?.length===0?(
+      <ShimmerSimpleGallery card imageHeight={300} caption/>
+    ):(
       <>
         <div className="search-container">
           <input type="text" className="search-input" placeholder="Search for your favourite restaurants..." value={searchText} onChange={(e)=>setSearchText(e.target.value)}></input>
@@ -38,16 +44,16 @@ const Body = () =>{
             setFilteredRestaurants(data);
           }}>Search</button>
         </div>
-        {allRestaurants?.length === 0 ? (<h1>waiting for data from api</h1>)
-        :
-        (<div className='restaurant-list'>
+        <div className='restaurant-list'>
         {filteredRestaurants.map((restaurant)=>{
-          return (<RestaurantCard key={restaurant?.info?.id} { ...restaurant?.info}/>);
+          return (<Link to = {"/restaurant/"+restaurant.info.id} key={restaurant?.info?.id}>
+          <RestaurantCard { ...restaurant?.info}/>
+          </Link>);
         })}
         </div>
-        )}
+        
       </>
-    );
+    )
 };
 
 export default Body;
