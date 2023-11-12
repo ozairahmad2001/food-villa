@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const About = () => {
+  console.log("inside the about component")
+
+  useEffect (()=>{
+    console.log("inside the use effect hook")
+  });
   return (
     <div>
         <h1>About Us Page</h1>

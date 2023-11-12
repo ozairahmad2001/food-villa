@@ -5,12 +5,7 @@ import { swiggy_api_url } from "../constants";
 import Shimmer from "./Shimmer";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { Link } from "react-router-dom";
-
-function filterData (searchText, restaurants){
-  const filterData = restaurants.filter((restaurants)=>restaurants?.info?.name.toLowerCase().includes(searchText.toLowerCase()));
-  console.log(filterData);
-  return filterData;
-}
+import { filterData } from "../utils/helper";
 
 const Body = () =>{
   const [searchText, setSearchText] = useState("");
