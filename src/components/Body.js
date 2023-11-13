@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () =>{
   const [searchText, setSearchText] = useState("");
@@ -27,6 +28,12 @@ const Body = () =>{
       console.log(error);
     }
   }
+
+  const isOnline = useOnline();
+  if(!isOnline){
+    return <h1>Looks like you are offline... please check your internet connection.</h1>
+  }
+
   if(!allRestaurants) return null;
     return allRestaurants?.length===0?(
       <ShimmerSimpleGallery card imageHeight={300} caption/>
