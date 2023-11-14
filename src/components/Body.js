@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import { swiggy_api_url } from "../constants";
@@ -7,11 +7,13 @@ import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     getRestaurants();
@@ -43,7 +45,7 @@ const Body = () => {
     );
   }
 
-  console.log(allRestaurants)
+  console.log(allRestaurants);
 
   if (!allRestaurants) return null;
   return allRestaurants?.length === 0 ? (

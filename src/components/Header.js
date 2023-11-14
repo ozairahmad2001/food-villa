@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../utils/UserContext";
+
 export const Title = () => {
   return (
     <a href="/">
@@ -11,6 +13,7 @@ export const Title = () => {
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const {user} = useContext(UserContext);
   return (
     <div className="flex justify-between bg-pink-50 shadow-md ">
       <Title />
@@ -36,6 +39,7 @@ const Header = () => {
             {" "}
             <Link to="/instamart">Instamart</Link>
           </li>
+          <li className="p-18 font-bold text-red-900 uppercase">{user.name}</li>
           <li className="px-2">
             {isLoggedIn ? (
               <button
@@ -44,7 +48,7 @@ const Header = () => {
                 Logout
               </button>
             ) : (
-              <button className="login-btn" onClick={() => navigate("/login")}>
+              <button className="login-btn"  onClick={() => navigate("/login")}>
                 Login
               </button>
             )}

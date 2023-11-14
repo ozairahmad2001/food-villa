@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useContext } from "react";
 import { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js";
@@ -12,15 +12,23 @@ import Login from "./components/Login.js";
 import Cart from "./components/Cart.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
 import Shimmer from "./components/Shimmer.js";
+import UserContext from "./utils/UserContext.js";
 
 const Instamart = lazy(() => import("./components/Instamart.js"));
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "ozair ahmad",
+    email: "ozairahmad@gmail.com",
+  });
   return (
-    <React.Fragment>
+    <UserContext.Provider value = {{
+      user:user,
+      setUser:setUser,
+    }}>
       <Header />
       <Outlet />
       <Footer />
-    </React.Fragment>
+    </UserContext.Provider>
   );
 };
 
