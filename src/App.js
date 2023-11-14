@@ -17,7 +17,7 @@ import UserContext from "./utils/UserContext.js";
 const Instamart = lazy(() => import("./components/Instamart.js"));
 const AppLayout = () => {
   const [user, setUser] = useState({
-    name: "ozair ahmad",
+    name: "Ozair Ahmad",
     email: "ozairahmad@gmail.com",
   });
   return (
