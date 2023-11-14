@@ -39,14 +39,14 @@ const Body = () =>{
       <ShimmerSimpleGallery card imageHeight={300} caption/>
     ):(
       <>
-        <div className="search-container">
-          <input type="text" className="search-input" placeholder="Search for your favourite restaurants..." value={searchText} onChange={(e)=>setSearchText(e.target.value)}></input>
-          <button className="search-btn" onClick={()=>{
+        <div className="search-container p-3 my-2 flex justify-center items-center">
+          <input type="text" className="search-input mx-2 border-2 rounded-md focus:bg-slate-200 w-80 p-1 h-11" placeholder="Search for your favourite restaurants..." value={searchText} onChange={(e)=>setSearchText(e.target.value)}></input>
+          <button className="search-btn p-2 m-2 bg-violet-500 hover:bg-violet-600 rounded-md text-white" onClick={()=>{
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
           }}>Search</button>
         </div>
-        <div className='restaurant-list'>
+        <div className='flex flex-wrap justify-center'>
         {filteredRestaurants.map((restaurant)=>{
           return (<Link to = {"/restaurant/"+restaurant.info.id} key={restaurant?.info?.id}>
           <RestaurantCard { ...restaurant?.info}/>
