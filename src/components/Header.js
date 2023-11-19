@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export const Title = () => {
   return (
@@ -14,6 +15,7 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const {user} = useContext(UserContext);
+  const cartItems = useSelector((store)=>store.cart.items);
   return (
     <div className="flex justify-between bg-pink-50 shadow-md ">
       <Title />
@@ -23,7 +25,7 @@ const Header = () => {
             {" "}
             <Link to="/">Home</Link>
           </li>
-          <li className="px-2">
+          <li className="px-2" >
             {" "}
             <Link to="/about">About</Link>
           </li>
@@ -33,11 +35,11 @@ const Header = () => {
           </li>
           <li className="px-2">
             {" "}
-            <Link to="/cart">Cart</Link>
+            <Link to="/instamart">Instamart</Link>
           </li>
           <li className="px-2">
             {" "}
-            <Link to="/instamart">Instamart</Link>
+            <Link to="/cart">Cart {cartItems.length} items</Link>
           </li>
           <li className="p-18 font-bold text-red-900 uppercase">{user.name}</li>
           <li className="px-2">
